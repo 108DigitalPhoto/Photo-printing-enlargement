@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Photo printing & enlargement</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --green: #2f8b5b;
+        --bg: #ffffff;
+        --card: #fff;
+        --muted: #6b5442;
+        --accent: #f6b35c;
+        font-family: "Noto Sans Thai", "Arial", sans-serif;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #222;
+      }
+
+      header {
+        background-image: url("picture/BG_header.png");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding-bottom: 10px;
+        text-align: center;
+      }
+
+      .header-bar {
+        position: relative;
+        width: 100%;
+      }
+
+      .bar-img {
+        width: 100%;
+        display: block;
+      }
+
+      .logo-img {
+        position: absolute;
+        top: 0;
+        left: 8px;
+        width: 30%;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0 16px;
+      }
+
+      .header-container {
+        position: relative;
+      }
+
+      .lang-buttons {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-end;
+
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+
+      @media (min-width: 700px) {
+        header h1 {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container">
+        <!--header bar-->
+        <img src="picture/header_bar.png" alt="header bar" class="bar-img" />
+        <!--108 logo-->
+        <img src="picture/108logo_header.png" alt="logo" class="logo-img" />
+        <!--language button-->
+        <div class="lang-buttons">
+          <img
+            src="picture/TH_button.png"
+            alt="TH button"
+            style="width: 12%"
+            onclick="setLang('th')"
+          />
+          <img
+            src="picture/EN_button.png"
+            alt="EN button"
+            style="width: 12%"
+            onclick="setLang('en')"
+          />
+        </div>
+      </div>
+      <!--page title-->
+      <img
+        src="picture/printPhoto_title_header.png"
+        alt="title header"
+        style="width: 70%; padding-top: 10px"
+      />
+      <!--page banner-->
+      <img
+        src="picture/headerBanner(print).png"
+        alt="print photo"
+        style="width: 75%; display: block; margin: -25px auto"
+        id="headerBanner"
+      />
+    </header>
+
+    <main class="container">
+      <!--polaroid section-->
+      <img
+        src="picture/printPhoto_main-1.png"
+        alt="print photo main-1"
+        style="width: 90%; display: block; margin: 0 auto"
+        id="main-1"
+      />
+      <!--2P & 4P section-->
+      <div>
+        <img
+          src="picture/printPhoto_main-2.png"
+          alt="print photo main-2"
+          style="width: 90%; display: block; margin: 0 auto; padding-top: 10px"
+          id="main-2"
+        />
+      </div>
+      <!--small photo section-->
+      <img
+        src="picture/printPhoto_main-3.png"
+        alt="print photo main-3"
+        style="width: 90%; display: block; margin: 0 auto; padding-top: 20px"
+        id="main-3"
+      />
+      <!--large photo section-->
+      <img
+        src="picture/printPhoto_main-4.png"
+        alt="print photo main-4"
+        style="width: 100%; padding-top: 10px"
+        id="main-4"
+      />
+      <!--script for change language-->
+      <script>
+        function setLang(lang) {
+          const images = [
+            {
+              id: "headerBanner",
+              th: "picture/headerBanner(print).png",
+              en: "picture/EN/printPhoto_banner_EN.png",
+            },
+            {
+              id: "main-1",
+              th: "picture/printPhoto_main-1.png",
+              en: "picture/EN/printPhoto_main-1_EN.png",
+            },
+            {
+              id: "main-2",
+              th: "picture/printPhoto_main-2.png",
+              en: "picture/EN/printPhoto_main-2_EN.png",
+            },
+            {
+              id: "main-3",
+              th: "picture/printPhoto_main-3.png",
+              en: "picture/EN/printPhoto_main-3_EN.png",
+            },
+            {
+              id: "main-4",
+              th: "picture/printPhoto_main-4.png",
+              en: "picture/EN/printPhoto_main-4_EN.png",
+            },
+          ];
+
+          images.forEach((img) => {
+            document.getElementById(img.id).src =
+              lang === "th" ? img.th : img.en;
+          });
+        }
+      </script>
+    </main>
+  </body>
+</html>
